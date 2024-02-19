@@ -6,6 +6,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import { config } from 'dotenv'
 import userRoutes from '../src/user/user.routes.js'
+import courseRoutes from '../src/course/course.routes.js'
 
 const app = express()
 config()
@@ -18,6 +19,7 @@ app.use(helmet())
 app.use(morgan('dev'))
 
 app.use('/user', userRoutes)
+app.use('/course', courseRoutes)
 
 export const initServer = () => {
     app.listen(port)

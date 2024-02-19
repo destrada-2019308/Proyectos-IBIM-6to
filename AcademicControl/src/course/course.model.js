@@ -17,11 +17,6 @@ const courseSchema = Schema({
         type: Schema.ObjectId,
         require: true,
         ref: 'user'
-    },
-    student: {
-        type: Schema.ObjectId,
-        require: true,
-        ref: 'user'
     }
 },
 {

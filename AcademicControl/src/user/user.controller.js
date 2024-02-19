@@ -119,3 +119,4 @@ export const updateStudent = async(req, res) =>{
         return res.status(500).send({message: `Error updating account`})
     }
 }
+
