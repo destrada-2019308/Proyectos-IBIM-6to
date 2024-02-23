@@ -1,0 +1,292 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ProyectoFinalIBIM",
+    "dateExported": "2024-02-23T05:41:25.494Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "5af1ddb2-08d5-467d-8d5d-c4e69e2f5d5a",
+            "name": "Categories",
+            "containerId": "",
+            "created": "2024-02-23T03:05:42.510Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "ad58cfb1-3eca-4093-afa3-2bd94f7fe9b6",
+            "name": "Products",
+            "containerId": "",
+            "created": "2024-02-23T04:31:44.756Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b7bfb4bf-ad1b-4faa-9bb9-7f3fff4000ed",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "5af1ddb2-08d5-467d-8d5d-c4e69e2f5d5a",
+            "name": "test",
+            "url": "/categories/test",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-23T03:06:28.786Z",
+            "modified": "2024-02-23T03:07:44.789Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c3cdcce1-0055-4323-8ee7-73713003fdd0",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "5af1ddb2-08d5-467d-8d5d-c4e69e2f5d5a",
+            "name": "SaveCategories",
+            "url": "/categories/saveCategories",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-23T03:06:41.090Z",
+            "modified": "2024-02-23T03:10:54.768Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "electronicos"
+                    },
+                    {
+                        "name": "description",
+                        "value": "asdads"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "8289ef60-7a6b-492b-bb76-ed61a3353604",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "5af1ddb2-08d5-467d-8d5d-c4e69e2f5d5a",
+            "name": "updateCategories",
+            "url": "/categories/updateCategories/65d80cbe40a71a1fc25000ed",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-23T03:38:34.573Z",
+            "modified": "2024-02-23T03:39:41.567Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "description",
+                        "value": "Son lo mejores electronicos"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "451644eb-bcb0-4d2e-86da-29d5e5cfcf90",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "5af1ddb2-08d5-467d-8d5d-c4e69e2f5d5a",
+            "name": "DeleteCategories",
+            "url": "/categories/deleteCategories/65d80cbe40a71a1fc25000ed",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-23T03:46:28.271Z",
+            "modified": "2024-02-23T03:48:12.454Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "85fe680b-52a4-4bee-8c29-f566f908b52c",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "5af1ddb2-08d5-467d-8d5d-c4e69e2f5d5a",
+            "name": "search",
+            "url": "/categories/search",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-23T04:00:47.987Z",
+            "modified": "2024-02-23T04:03:45.582Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "sea",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "search",
+                        "value": "electronicos"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "b18d2927-f2d4-4270-8473-b422c34948e8",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "5af1ddb2-08d5-467d-8d5d-c4e69e2f5d5a",
+            "name": "ShowAllCategories",
+            "url": "/categories/get",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-02-23T04:03:59.981Z",
+            "modified": "2024-02-23T04:04:14.503Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b699c1bf-0e7a-4715-abc9-428580274073",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "ad58cfb1-3eca-4093-afa3-2bd94f7fe9b6",
+            "name": "Test",
+            "url": "/products/test",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-23T05:03:32.129Z",
+            "modified": "2024-02-23T05:03:46.262Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "27c13eef-bb66-4430-809a-49fc83176221",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "ad58cfb1-3eca-4093-afa3-2bd94f7fe9b6",
+            "name": "SaveProduct",
+            "url": "/products/saveProduct",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-02-23T05:10:02.006Z",
+            "modified": "2024-02-23T05:15:52.134Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "cellphone"
+                    },
+                    {
+                        "name": "price",
+                        "value": "1200.99"
+                    },
+                    {
+                        "name": "brand",
+                        "value": "Samsung"
+                    },
+                    {
+                        "name": "description",
+                        "value": "32pulgadas, pantalla táctil"
+                    },
+                    {
+                        "name": "amount",
+                        "value": "12"
+                    },
+                    {
+                        "name": "stock",
+                        "value": "2"
+                    },
+                    {
+                        "name": "categories",
+                        "value": "65d815819f01de27372aacc1"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "78e0d2cc-c60e-4bf4-9714-4e86d001ff95",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "ad58cfb1-3eca-4093-afa3-2bd94f7fe9b6",
+            "name": "ShowAllProducts",
+            "url": "/products/showAll",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-02-23T05:19:28.582Z",
+            "modified": "2024-02-23T05:19:38.761Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "aca47161-b1f9-4723-a0ce-8142873c53fb",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "ad58cfb1-3eca-4093-afa3-2bd94f7fe9b6",
+            "name": "UpdateProduct",
+            "url": "/products/updateProduct/65d82a08e41d442bee7d0d7b",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2024-02-23T05:25:11.251Z",
+            "modified": "2024-02-23T05:25:51.608Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "telefonito"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "3f623e3c-6ede-462a-87f8-2ab5e9630dd7",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "ad58cfb1-3eca-4093-afa3-2bd94f7fe9b6",
+            "name": "DeleteProduct",
+            "url": "/products/deleteProduct/65d82a08e41d442bee7d0d7b",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-02-23T05:31:20.898Z",
+            "modified": "2024-02-23T05:32:25.560Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4aaeaa85-f602-4ca5-8e26-3cee9e8aaab1",
+            "colId": "54482a24-ecc4-4b27-8cc1-ec05adffcb0a",
+            "containerId": "ad58cfb1-3eca-4093-afa3-2bd94f7fe9b6",
+            "name": "Search",
+            "url": "/products/search",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-02-23T05:36:14.700Z",
+            "modified": "2024-02-23T05:41:15.652Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "search",
+                        "value": "cellphone"
+                    }
+                ]
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:2658"
+        }
+    }
+}
