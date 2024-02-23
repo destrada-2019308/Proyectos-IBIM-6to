@@ -19,10 +19,6 @@ const productSchema = Schema({
         type: String,
         required: true
     },
-    amount: {
-        type: Number,
-        required: true
-    },
     stock: {
         type: Number,
         required: true

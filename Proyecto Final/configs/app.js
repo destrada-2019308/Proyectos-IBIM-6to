@@ -9,6 +9,7 @@ import cors from "cors"
 import { config } from "dotenv"
 import categoriesRoutes from "../src/categories/categories.routes.js"
 import productsRoutes from '../src/products/product.routes.js'
+import userRoutes from '../src/user/user.routes.js'
 
 //Configuraciones
 const app = express()
@@ -25,6 +26,7 @@ app.use(morgan('dev'))
 //Declaramos las rutas
 app.use('/categories', categoriesRoutes)
 app.use('/products', productsRoutes)
+app.use('/user', userRoutes)
 
 //Levantamos el sevidor
 export const initServer = () => {
