@@ -7,6 +7,7 @@ import cors from 'cors'
 import { config } from 'dotenv'
 import userRoutes from '../src/user/user.routes.js'
 import courseRoutes from '../src/course/course.routes.js'
+import assignRoutes from '../src/assign/assign.routes.js'
 
 const app = express()
 config()
@@ -20,6 +21,7 @@ app.use(morgan('dev'))
 
 app.use('/user', userRoutes)
 app.use('/course', courseRoutes)
+app.use('/assign', assignRoutes)
 
 export const initServer = () => {
     app.listen(port)
