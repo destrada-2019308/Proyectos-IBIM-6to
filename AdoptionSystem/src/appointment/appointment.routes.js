@@ -9,7 +9,6 @@ const api = Router()
 //Rutas públicas 
 api.get('/test', test)
 
-
 //Rutas privadas - CLIENT
 api.post('/save', [validateJwt], save)
 

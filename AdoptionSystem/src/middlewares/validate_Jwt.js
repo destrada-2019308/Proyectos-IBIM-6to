@@ -8,11 +8,11 @@ export const validateJwt = async(req, res, next) => {
         //obtener la llave de acceso al token
         let secretKey = process.env.SECRET_KEY
         //obtener el token de los headers
-        let { token } = req.headers
+        let { authorization } = req.headers
         //verificamos si viene el token
-        if(!token)return res.status(401).send({message: 'Unauthorized'})
+        if(!authorization)return res.status(401).send({message: 'Unauthorized'})
         //obtener el uid del usuario que envío el token
-        let { uid } = jwt.verify(token, secretKey)
+        let { uid } = jwt.verify(authorization, secretKey)
         //validar si aún existe en la base de datos
         let user = await User.findOne({ _id: uid})
         if(!user) return res.status(404).send({message: 'User not found - Unauthorized'})
