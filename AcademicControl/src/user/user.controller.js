@@ -120,3 +120,18 @@ export const updateStudent = async(req, res) =>{
     }
 }
 
+export const deleteA = async(req, res) =>{
+    try{
+        //Capturar el id del estudiante a eliminar
+        let { id } = req.params
+        //Eliminar 
+        let deletedStudent = await User.deleteOne({_id: id})
+        //validar que se eliminó
+        if(deletedStudent.deleteCount === 0 ) return res.status(404).send({message: 'Student not found and not deleted'})
+        //Respondemos al usuario
+        return res.send({message: 'Deleted student successfully'})
+    }catch(err){
+        console.error(err)
+        return res.status(404).send({message: 'Error deleting student'})
+    }
+}

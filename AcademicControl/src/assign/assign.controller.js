@@ -18,13 +18,14 @@ export const assingCourse = async (req, res) => {
         if(!user) return res.status(404).send({message: 'Student not found'})
         const studentId = data.student;
         const courseId = data.course
-        const courseCount = await Assignment.countDocuments({ course: courseId }).populate('students', ['username'])
+        
         const existingCourse = await Assignment.findOne({ course: courseId});
-        if (courseCount >= 3) {
-            return res.status(400).send({message: `The studento with ${studentId} is alredy exists in 3 courses.`});
+        const userAssignmentsCount = await Assignment.countDocuments({ student: studentId });
+        if (userAssignmentsCount >= 3) {
+            return res.status(400).send({ message: 'El usuario ya tiene 3 asignaciones' });
         }
         if (existingCourse) {
-            return res.status(400).send({message: `The studento with ${studentId} i aslredy exists with course: ${data.course}.`});
+            return res.status(400).send({message: `The student with ${studentId} i aslredy exists with course: ${data.course}.`});
         }
        // if(courseCount >= 3 || existingCourse) return res.status(400).send({message: `The student is alredy exists in 3 course and exists wit only course`});
         let assing = new Assignment(data)

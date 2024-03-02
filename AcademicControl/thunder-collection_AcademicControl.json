@@ -1,49 +1,56 @@
 {
     "client": "Thunder Client",
     "collectionName": "AcademicControl",
-    "dateExported": "2024-02-22T22:32:51.850Z",
+    "dateExported": "2024-03-02T23:04:35.021Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "95810e3f-ceec-4a8f-a2a3-3ef715c23d80",
+            "_id": "82bd3745-e150-4edd-85e9-28f77ef17b93",
             "name": "Rutas públicas",
             "containerId": "",
-            "created": "2024-02-22T21:56:23.642Z",
+            "created": "2024-03-02T15:20:46.410Z",
             "sortNum": 20000
         },
         {
-            "_id": "c2f6df94-6bf0-4bb7-80b2-703b57b887f7",
+            "_id": "e953117f-fda3-4e57-b8da-805341ba2a4c",
             "name": "TEACHER",
             "containerId": "",
-            "created": "2024-02-22T22:04:19.359Z",
+            "created": "2024-03-02T15:20:46.411Z",
             "sortNum": 30000
         },
         {
-            "_id": "dad4169e-2eb2-4a11-a03f-346c60073262",
+            "_id": "cc37771a-7a65-4635-9139-5df3b66d5572",
             "name": "STUDENT",
             "containerId": "",
-            "created": "2024-02-22T22:04:26.716Z",
+            "created": "2024-03-02T15:20:46.412Z",
             "sortNum": 40000
         },
         {
-            "_id": "1192d329-c332-4931-9048-4c04a04e591f",
+            "_id": "18d51f6f-f4eb-49c4-97ec-9b8a4b2581df",
             "name": "Cursos",
             "containerId": "",
-            "created": "2024-02-22T22:09:55.166Z",
+            "created": "2024-03-02T15:20:46.413Z",
             "sortNum": 50000
+        },
+        {
+            "_id": "860e48df-17f6-4ee6-b91b-e7c870394530",
+            "name": "Assign",
+            "containerId": "",
+            "created": "2024-03-02T15:21:45.976Z",
+            "sortNum": 60000
         }
     ],
     "requests": [
         {
-            "_id": "c7b0b669-9249-4b78-abe5-25f14859a9b7",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "95810e3f-ceec-4a8f-a2a3-3ef715c23d80",
+            "_id": "835e77b9-72a4-4a63-8dea-3d2de222d393",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "82bd3745-e150-4edd-85e9-28f77ef17b93",
             "name": "RegistrarUsuario",
             "url": "/user/register",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-02-22T21:58:08.019Z",
-            "modified": "2024-02-22T22:01:30.948Z",
+            "created": "2024-03-02T15:20:46.411Z",
+            "modified": "2024-03-02T22:51:01.986Z",
             "headers": [],
             "params": [],
             "body": {
@@ -52,15 +59,15 @@
                 "form": [
                     {
                         "name": "name",
-                        "value": "Santiago"
+                        "value": "Diego"
                     },
                     {
                         "name": "surname",
-                        "value": "Gonzalez"
+                        "value": "Estrada"
                     },
                     {
                         "name": "username",
-                        "value": "pampichi"
+                        "value": "destrada"
                     },
                     {
                         "name": "password",
@@ -68,7 +75,7 @@
                     },
                     {
                         "name": "email",
-                        "value": "pampichi@kinal"
+                        "value": "destrada@kinal"
                     },
                     {
                         "name": "phone",
@@ -83,15 +90,15 @@
             "tests": []
         },
         {
-            "_id": "594ec372-24e8-484f-a966-1adc4b72f2c1",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "95810e3f-ceec-4a8f-a2a3-3ef715c23d80",
+            "_id": "089d73e0-c56d-4961-8cbc-4e001e1ff9e3",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "82bd3745-e150-4edd-85e9-28f77ef17b93",
             "name": "Login",
             "url": "/user/login",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2024-02-22T22:02:58.771Z",
-            "modified": "2024-02-22T22:27:40.249Z",
+            "created": "2024-03-02T15:20:46.412Z",
+            "modified": "2024-03-02T22:50:38.356Z",
             "headers": [],
             "params": [],
             "body": {
@@ -111,15 +118,15 @@
             "tests": []
         },
         {
-            "_id": "c37d250e-43a3-4178-9a09-9823ba926a8f",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "c2f6df94-6bf0-4bb7-80b2-703b57b887f7",
+            "_id": "2fa0070e-a6ed-4a9d-80c2-baf1eaf06010",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "e953117f-fda3-4e57-b8da-805341ba2a4c",
             "name": "Test",
             "url": "/user/test",
             "method": "GET",
             "sortNum": 40000,
-            "created": "2024-02-22T22:05:40.002Z",
-            "modified": "2024-02-22T22:06:08.079Z",
+            "created": "2024-03-02T15:20:46.413Z",
+            "modified": "2024-03-02T15:20:46.413Z",
             "headers": [
                 {
                     "name": "token",
@@ -130,19 +137,19 @@
             "tests": []
         },
         {
-            "_id": "efc5a492-414f-4de7-b751-6875553488b7",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "c2f6df94-6bf0-4bb7-80b2-703b57b887f7",
+            "_id": "78b0815c-402f-4ed4-b5d0-7250b0f5597e",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "e953117f-fda3-4e57-b8da-805341ba2a4c",
             "name": "RegistrarMaestro",
-            "url": "/user/registerTeacher/65d7c46a90899e13a782da61",
+            "url": "/user/registerTeacher/65e3822236b3f52f923c8c7a",
             "method": "PUT",
             "sortNum": 50000,
-            "created": "2024-02-22T22:06:27.305Z",
-            "modified": "2024-02-22T22:07:36.957Z",
+            "created": "2024-03-02T15:20:46.414Z",
+            "modified": "2024-03-02T19:48:03.726Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQzMTk5YTExNDE5MDYyYzIyMTFjNzUiLCJ1c2VybmFtZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwODYzOTQyMywiZXhwIjoxNzA4NjUzODIzfQ.wg7pB_0Xq-23yUxrCBNHcNe7QkJ6j0v5R4n5HNZIdko"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUzODFkZDM2YjNmNTJmOTIzYzhjNzUiLCJ1c2VybmFtZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwOTQwODg3MiwiZXhwIjoxNzA5NDIzMjcyfQ.povBdxY4xd4DtJnlAKx-4ed9tZ7ixCvOhElXmXBXzfg"
                 }
             ],
             "params": [],
@@ -159,15 +166,15 @@
             "tests": []
         },
         {
-            "_id": "ad359209-b62d-44dd-b861-2dce6608bf88",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "dad4169e-2eb2-4a11-a03f-346c60073262",
+            "_id": "a2bcc346-0d18-4094-9c87-2a2e6cae91f9",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "cc37771a-7a65-4635-9139-5df3b66d5572",
             "name": "ActualizarEstudiante",
             "url": "/user/updateStudent/65d31ac41a31eee402c0bf56",
             "method": "PUT",
             "sortNum": 60000,
-            "created": "2024-02-22T22:08:07.833Z",
-            "modified": "2024-02-22T22:09:19.713Z",
+            "created": "2024-03-02T15:20:46.415Z",
+            "modified": "2024-03-02T15:20:46.415Z",
             "headers": [
                 {
                     "name": "token",
@@ -188,19 +195,19 @@
             "tests": []
         },
         {
-            "_id": "5adfa65b-1182-40b4-9ff7-b9e0c7d342cf",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "1192d329-c332-4931-9048-4c04a04e591f",
+            "_id": "0f16ed2b-05ea-415f-aedb-8db99bb414e3",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "18d51f6f-f4eb-49c4-97ec-9b8a4b2581df",
             "name": "RegistrarCurso",
             "url": "/course/saveCourse",
             "method": "POST",
             "sortNum": 70000,
-            "created": "2024-02-22T22:10:09.720Z",
-            "modified": "2024-02-22T22:27:03.201Z",
+            "created": "2024-03-02T15:20:46.416Z",
+            "modified": "2024-03-02T19:50:38.529Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQzMTk5YTExNDE5MDYyYzIyMTFjNzUiLCJ1c2VybmFtZSI6ImFkbWluIiwibmFtZSI6ImFkbWluIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwODY0MDI0MiwiZXhwIjoxNzA4NjU0NjQyfQ.wiG-8PbLbzW7QuUXuUXUTja0Of31zepCnbgkE3MQIuQ"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUzODIyMjM2YjNmNTJmOTIzYzhjN2EiLCJ1c2VybmFtZSI6InBhbXBpY2hpIiwibmFtZSI6IlNhbnRpYWdvIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwOTQwODk5NSwiZXhwIjoxNzA5NDIzMzk1fQ.v84XGQ77QMArntgkNKSwhGWK9bnF_KMER-mbdCGvvlk"
                 }
             ],
             "params": [],
@@ -210,11 +217,11 @@
                 "form": [
                     {
                         "name": "name",
-                        "value": "Física"
+                        "value": "Valores"
                     },
                     {
                         "name": "cost",
-                        "value": "300"
+                        "value": "150"
                     },
                     {
                         "name": "grade",
@@ -222,22 +229,22 @@
                     },
                     {
                         "name": "teacher",
-                        "value": "65d7c46a90899e13a782da61"
+                        "value": "65e3822236b3f52f923c8c7a"
                     }
                 ]
             },
             "tests": []
         },
         {
-            "_id": "ecd61e8b-cf3e-49b6-9d38-80eb47d52f48",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "1192d329-c332-4931-9048-4c04a04e591f",
+            "_id": "a10d8ac2-6dcc-44c4-86fe-7837744a3d69",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "18d51f6f-f4eb-49c4-97ec-9b8a4b2581df",
             "name": "ActualizarCurso",
             "url": "/course/updatedCourse/65d7c9fbf6b44d6e74070fad",
             "method": "PUT",
             "sortNum": 80000,
-            "created": "2024-02-22T22:25:35.590Z",
-            "modified": "2024-02-22T22:28:16.497Z",
+            "created": "2024-03-02T15:20:46.417Z",
+            "modified": "2024-03-02T15:20:46.417Z",
             "headers": [
                 {
                     "name": "token",
@@ -262,38 +269,38 @@
             "tests": []
         },
         {
-            "_id": "8eb925d9-9ec8-4b4f-86e2-cd94cc710b05",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "1192d329-c332-4931-9048-4c04a04e591f",
+            "_id": "8b43f69e-7978-461c-955e-a215632592e0",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "18d51f6f-f4eb-49c4-97ec-9b8a4b2581df",
             "name": "EliminarCourse",
-            "url": "/course/deleteCourse/65d7ca37f6b44d6e74070fb1",
+            "url": "/course/deleteCourse/65e382fc36b3f52f923c8c85",
             "method": "DELETE",
             "sortNum": 100000,
-            "created": "2024-02-22T22:28:37.833Z",
-            "modified": "2024-02-22T22:29:24.854Z",
+            "created": "2024-03-02T15:20:46.419Z",
+            "modified": "2024-03-02T22:51:24.945Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ3YzQ2YTkwODk5ZTEzYTc4MmRhNjEiLCJ1c2VybmFtZSI6InBhbXBpY2hpIiwibmFtZSI6IlNhbnRpYWdvIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwODY0MDg2MCwiZXhwIjoxNzA4NjU1MjYwfQ.jwaFCsE5UWudR3ZCXRz-kJ9ZtCLZ3EcvaGctiLjPaDU"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUzODIyMjM2YjNmNTJmOTIzYzhjN2EiLCJ1c2VybmFtZSI6InBhbXBpY2hpIiwibmFtZSI6IlNhbnRpYWdvIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwOTQxOTgzOCwiZXhwIjoxNzA5NDM0MjM4fQ.74ZPPUBWPTyGrwkOAqaN5iqrSiOEizM0UZ2dnsWTF5c"
                 }
             ],
             "params": [],
             "tests": []
         },
         {
-            "_id": "602e2d66-b07e-4783-a051-a1053ab7e77d",
-            "colId": "26e2dbb9-4b68-4252-a39e-8963911b8283",
-            "containerId": "1192d329-c332-4931-9048-4c04a04e591f",
+            "_id": "a3915eed-fb7f-4a90-aa7c-8a59281dbecc",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "18d51f6f-f4eb-49c4-97ec-9b8a4b2581df",
             "name": "BuscarCourse",
             "url": "/course/search",
             "method": "POST",
             "sortNum": 110000,
-            "created": "2024-02-22T22:28:32.051Z",
-            "modified": "2024-02-22T22:32:02.273Z",
+            "created": "2024-03-02T15:20:46.418Z",
+            "modified": "2024-03-02T19:51:45.560Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ3YzQ2YTkwODk5ZTEzYTc4MmRhNjEiLCJ1c2VybmFtZSI6InBhbXBpY2hpIiwibmFtZSI6IlNhbnRpYWdvIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwODY0MDg2MCwiZXhwIjoxNzA4NjU1MjYwfQ.jwaFCsE5UWudR3ZCXRz-kJ9ZtCLZ3EcvaGctiLjPaDU"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUzODIyMjM2YjNmNTJmOTIzYzhjN2EiLCJ1c2VybmFtZSI6InBhbXBpY2hpIiwibmFtZSI6IlNhbnRpYWdvIiwicm9sZSI6IlRFQUNIRVJfUk9MRSIsImlhdCI6MTcwOTQwODk5NSwiZXhwIjoxNzA5NDIzMzk1fQ.v84XGQ77QMArntgkNKSwhGWK9bnF_KMER-mbdCGvvlk"
                 }
             ],
             "params": [],
@@ -303,10 +310,91 @@
                 "form": [
                     {
                         "name": "search",
-                        "value": "65d7c46a90899e13a782da61"
+                        "value": "65e381dd36b3f52f923c8c75"
                     }
                 ]
             },
+            "tests": []
+        },
+        {
+            "_id": "2a0e0ff1-23ea-4c77-8ed8-ab5965785138",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "860e48df-17f6-4ee6-b91b-e7c870394530",
+            "name": "Assignar Course",
+            "url": "/assign/assingCourse",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-03-02T15:21:55.182Z",
+            "modified": "2024-03-02T22:41:23.064Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUzODIxMDM2YjNmNTJmOTIzYzhjNzgiLCJ1c2VybmFtZSI6ImRlc3RyYWRhIiwibmFtZSI6IkRpZWdvIiwicm9sZSI6IlNUVURFTlRfUk9MRSIsImlhdCI6MTcwOTQwOTEzMCwiZXhwIjoxNzA5NDIzNTMwfQ.6z4nLSsQrtL5SCB_B7sVPlPCdt04YG70sWZlhflDMgU"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "course",
+                        "value": "65e3830e36b3f52f923c8c91"
+                    },
+                    {
+                        "name": "student",
+                        "value": "65e3821036b3f52f923c8c78"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "88a37d74-7e9f-4c9d-b438-72e76202b5ec",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "860e48df-17f6-4ee6-b91b-e7c870394530",
+            "name": "Search course",
+            "url": "/assign/search",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-03-02T15:22:02.058Z",
+            "modified": "2024-03-02T19:40:48.737Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUzNDg2OTNhOTU2MzE5ZTc3NzYxODYiLCJ1c2VybmFtZSI6InF3ZSIsIm5hbWUiOiJxd2UiLCJyb2xlIjoiU1RVREVOVF9ST0xFIiwiaWF0IjoxNzA5NDA4NDM5LCJleHAiOjE3MDk0MjI4Mzl9.ptctNsuRzDKe5DyPOEXrtj2hax7Fazr5uhheKDXAXvA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "search",
+                        "value": "65d31ac41a31eee402c0bf56"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "6865e0fc-43ef-4cf3-ab13-02d8b5a46d65",
+            "colId": "b250e025-a94d-4147-916d-712a710bce3c",
+            "containerId": "cc37771a-7a65-4635-9139-5df3b66d5572",
+            "name": "Delete Student",
+            "url": "/user/deleteA/65e3821036b3f52f923c8c78",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2024-03-02T22:45:46.579Z",
+            "modified": "2024-03-02T22:47:24.256Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWUzODIxMDM2YjNmNTJmOTIzYzhjNzgiLCJ1c2VybmFtZSI6ImRlc3RyYWRhIiwibmFtZSI6IkRpZWdvIiwicm9sZSI6IlNUVURFTlRfUk9MRSIsImlhdCI6MTcwOTQwOTEzMCwiZXhwIjoxNzA5NDIzNTMwfQ.6z4nLSsQrtL5SCB_B7sVPlPCdt04YG70sWZlhflDMgU"
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ],

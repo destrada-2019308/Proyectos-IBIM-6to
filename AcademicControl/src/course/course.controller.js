@@ -2,6 +2,7 @@
 //import { checkUpdate  } from "../utils/validator"
 import Course from './course.model.js'
 import User from '../user/user.model.js'
+import Assign from '../assign/assign.model.js'
 import { checkUpdate } from '../utils/validator.js'
 
 export const saveCourse = async (req, res) =>{
@@ -56,6 +57,8 @@ export const deleteCourse = async(req, res) =>{
         let { id } = req.params
         //Eliminar
         let deletedCourse = await Course.deleteOne({_id: id})
+        let courses = await Course.find({course: id})
+        if(courses) return res.status(404).send({message: 'course is not found'})
         //validación
         if(deletedCourse.deleteCount === 0 ) return res.status(404).send({message: 'Course not found and not deleted'})
         //Respondemos al usuario
