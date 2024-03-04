@@ -1,18 +1,18 @@
 'use strict'
 
 import jwt from 'jsonwebtoken'
-import User from '../user/user.model.js'//cambiar
+import User from '../user/user.model.js'
 
 export const validateJwt = async(req, res, next)=>{
     try{
         //obtener la llave de acceso al token
         let secretKey = process.env.SECRET_KEY
         //obtener el token de los header
-        let { token } = req.headers
+        let { authorization } = req.headers
         //verificar si viene el token
-        if(!token) return res.status(401).send({message: 'Unauthorized'})
+        if(!authorization) return res.status(401).send({message: 'Unauthorized'})
         //obtener el uid del usuario que envio el token
-        let { uid } = jwt.verify(token, secretKey)
+        let { uid } = jwt.verify(authorization, secretKey)
         //validar si aun existe en la bd
         let user = await User.findOne({_id: uid})
         if(!user) return res.status(404).send({message: 'User not found - Unauthorized'})
@@ -27,7 +27,7 @@ export const validateJwt = async(req, res, next)=>{
 export const isAdmin = async(req, res, next) =>{
     try{
         let { user } = req
-        if(!user ||  user.role !== 'TEACHER_ROLE') return res.status(403).send({message: `You don't have access | username: ${ user.username}`}) 
+        if(!user ||  user.role !== 'ADMIN') return res.status(403).send({message: `You don't have access | username: ${ user.username}`}) 
         next()
     }catch(err){
         console.error(err)
@@ -38,7 +38,7 @@ export const isAdmin = async(req, res, next) =>{
 export const isStudent = async(req, res, next) => {
     try {
         let { user } = req
-        if(!user || user.role !== 'STUDENT_ROLE') return res.status(403).send({message: `You don´t have access | username: ${user.username}`})
+        if(!user || user.role !== 'CLIENT') return res.status(403).send({message: `You don´t have access | username: ${user.username}`})
         next()
     } catch (err) {
         console.error(err)
