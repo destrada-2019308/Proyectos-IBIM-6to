@@ -9,7 +9,10 @@ export const saveCourse = async (req, res) =>{
     try{
         // Capturar el nombre del curso desde el body
         let data = req.body
- 
+        let { teacherId } = req.body
+        const teacher = await User.findOne({_id: data.teacher})
+        const findCourse = await Course.find({_id: teacher})
+        if(!teacher) return res.status(404).send({message: 'Teacher not found'})
         const existsCourse = await Course.findOne({ name: data.name });
         if (existsCourse) {
             return res.status(400).send({message: `A course alredy exists`});
@@ -55,12 +58,15 @@ export const updatedCourse = async(req, res)=>{
 export const deleteCourse = async(req, res) =>{
     try{
         let { id } = req.params
+        //Buscar a las asignaciones que tiene el curso 
+        const assignCourse = await Assign.find({course: id})
+        //Eliminar cada asignacion 
+        for(const assignment of assignCourse){
+            await assignment.deleteOne()
+        }
         //Eliminar
-        let deletedCourse = await Course.deleteOne({_id: id})
-        let courses = await Course.find({course: id})
-        if(courses) return res.status(404).send({message: 'course is not found'})
-        //validación
-        if(deletedCourse.deleteCount === 0 ) return res.status(404).send({message: 'Course not found and not deleted'})
+        let deletedCourse = await Course.findOneAndDelete({_id: id})
+        if(!deletedCourse) return res.status(404).send({message: 'Course not found and not deleted'})
         //Respondemos al usuario
         return res.send({message: 'Deleted course successfully'})
     }catch(err){
