@@ -2,6 +2,7 @@
 
 import Categories from '../categories/categories.model.js'
 import Products from './product.model.js'
+import { checkUpdateProduct } from '../utils/validator.js'
 
 export const test = (req, res) => {
     return res.send({message: 'Test is running'})
@@ -36,7 +37,10 @@ export const updateProduct = async(req, res) => {
         let data = req.body
         let { id }= req.params
         //Validamos que vengan datos
-        //let update = 
+        let { stock } = await Products.findOne({_id: id})
+        let update = checkUpdateProduct(data, false)
+        if (!update) return res.status(400).send({ message: 'Have submitted some data that cannot be updated or missing data' })
+        data.stock = parseInt(stock) + parseInt(data.stock)
         let updatedProduct = await Products.findOneAndUpdate(
             {_id: id},
             data,
@@ -70,7 +74,7 @@ export const search = async(req, res) => {
         let { search } = req.body
         //Bsucar
         let products = await Products.find(
-            {name: search}
+            {_id: search}
         ).populate( 'name')
         //validar la respuesta
         if(!products) return res.status(404).send({message: 'Products not found '})
@@ -79,5 +83,28 @@ export const search = async(req, res) => {
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error searching products'})
+    }
+}
+
+//Filtros
+//muestre productos agotados (sin stock)
+
+export const productoOutOfStock = async(req, res) => {
+    try {
+        let product = await Products.find({stock: 0})
+        return res.send({product})
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({message: 'Error getting products'})
+    }
+}
+
+export const getInventary = async(req, res)=>{        
+    try{
+        let products = await Products.find().populate('categories'); 
+        return res.send({ products })
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({ message: 'Error getting Products' })
     }
 }

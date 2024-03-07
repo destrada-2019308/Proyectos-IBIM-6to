@@ -11,6 +11,8 @@ export const saveCategories = async(req, res)=>{
     try {
         let data = req.body
         let categories = new Categories(data)
+        let categoryName = await Categories.findOne({name: data.name})
+        if(categoryName) return res.status(401).send({message: `The name (${data.name}) is already exists in other category, please give different name`})
         await categories.save()
         return res.send({message: `Register successfully, the categories register is ${categories.name}`})
     } catch (error) {

@@ -35,7 +35,7 @@ export const isAdmin = async(req, res, next) =>{
     }
 }
 
-export const isStudent = async(req, res, next) => {
+export const isClient = async(req, res, next) => {
     try {
         let { user } = req
         if(!user || user.role !== 'CLIENT') return res.status(403).send({message: `You don´t have access | username: ${user.username}`})
