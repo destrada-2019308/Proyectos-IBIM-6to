@@ -29,10 +29,24 @@ export const addToCart = async(req, res) => {
         if(uid !== data.user) return res.status(401).send({message: `Enter your ID to make a purchase`})
         if(stock === 0 ) return res.status(404).send({message: 'We do not have that product available'})
         //Instanciamos la clase
-        let purchase = new ShoppingCar(data)
-        let amount = purchase.amount
+        //let purchase = new ShoppingCar(data)
+        //Creamos la validacion de que si tiene 2 productos iguales los sume en un purchase
+        let cart = await ShoppingCar.findOne({user: data.user, product: data.product})
+        if(cart){
+            cart.amount = +cart.amount + +data.amount
+        }else{
+            //Si no existe, creamos uno nuevo
+            cart = new ShoppingCar({
+                product: data.product,
+                amount: data.amount,
+                status: 'CREATED',
+                date: new Date(),
+                user: data.user
+            })
+        }
+        let amount = cart.amount
         if(stock < amount) return res.send({message: 'Dont exists the amount required'})
-        await purchase.save()
+        await cart.save()
         return res.send({message: `Purchase successfully`})
 
     } catch (error) {
@@ -41,49 +55,17 @@ export const addToCart = async(req, res) => {
     }
 }
 
-//Proceso de compra
-//Completar el proceso de compra, presnetando la factura 
-//Completed
-//es un update de la compra
-export const purchase = async(req, res) =>{
-    try {
-        let data = req.body
-        let { id } = req.params
-        //vamos a restar el stock de la cantida que ingreso
-        
-        let update = checkUpdatePurchase(data, id)
-        if(!update) return res.status(401).send({message: 'Solo puede cambiar el status a completado'})
-        let updatePurchase = await ShoppingCar.findOneAndUpdate(
-            {_id: id},
-            data,
-            {new: true}
-        ).populate('user', ['name'], 'product', ['name'])
-        if(!updatePurchase) return res.status(401).send({message: 'The purchase is nos found'})
-        return res.send({message: 'Purchase is completed successfully', updatePurchase })
-    } catch (error) {
-        console.error(error)
-        return res.status(500).send({message: 'Error process purchase'})
-    }
-}
+//Historial de Compra: Al iniciar sesión, los usuarios pueden acceder a un historial completo de sus compras
+//anteriores.
 
-export const getPurchase = async(req, res) => {
+export const getPurchase = async(req, res) =>{
     try {
-        //Jalar las compras que tengan completed, va hacer lo del stock y lo va a mostrar en la factura
-        let data = req.body
-        let productId = data.product
-        let product = await Product.findOne({_id: productId})
-        let compra = await ShoppingCar.find({status: 'COMPLETED', product: productId})
-        
-        console.log(compra, product)
-        console.log(compra.amount);
-        console.log(product.stock);                                                                    
-        //devuelve una factura donde muestre las cosas que compro el usuario
-        return res.send({compra})
+        let { search } = req.body
+        let purchase = await ShoppingCar.find({user: search, status: 'COMPLETED'}).populate('user', ['name'])
+        if(!purchase) return res.status(404).send({message: 'Purchase not found'})
+        return res.send({message: 'Purchase found', purchase})
     } catch (error) {
         console.error(error)
         return res.status(500).send({message: 'Error getting purchase'})
     }
 }
-
-//Historial de compra
-//historial de compra de usuarios

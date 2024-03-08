@@ -5,7 +5,7 @@ import { Schema, model } from 'mongoose'
 const shoppingCarSchema = Schema({
     product: {
         type: Schema.ObjectId,
-        ref: 'products',
+        ref: 'product',
         required: true
     },
     amount: {
@@ -24,7 +24,7 @@ const shoppingCarSchema = Schema({
     },
     user: {
         type: Schema.ObjectId,
-        ref: 'products',
+        ref: 'user',
         required: true
     }
 },{

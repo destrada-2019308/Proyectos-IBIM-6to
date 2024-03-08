@@ -2,6 +2,7 @@
 
 import Categories from '../categories/categories.model.js'
 import Products from './product.model.js'
+import ShoppingCart from '../shoppingCar/shoppingCar.model.js'
 import { checkUpdateProduct } from '../utils/validator.js'
 
 export const test = (req, res) => {
@@ -87,6 +88,28 @@ export const search = async(req, res) => {
 }
 
 //Filtros
+//Productos mas vendidos
+export const infoProducMasVendidos = async(req, res) => {
+    try {
+        let ventasProductos = await ShoppingCart.aggregate([
+            { $group: 
+                { _id: "$product", 
+                    totalVendido: { $sum: "$amount" }
+                }},//el id especidica el campo a agrupar
+            { $sort: 
+                { totalVendido: -1 }},
+            { $limit: 5 }
+           //Hacemos una union entre 2 colecciones  
+        ]).lookup({ from: 'products', localField: '_id', foreignField: '_id', as: 'product' });
+
+        return res.send({ventasProductos})
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({ message: 'Error getting Products' })
+    }
+}
+
+
 //muestre productos agotados (sin stock)
 
 export const productoOutOfStock = async(req, res) => {
@@ -106,5 +129,42 @@ export const getInventary = async(req, res)=>{
     }catch(err){
         console.error(err)
         return res.status(500).send({ message: 'Error getting Products' })
+    }
+}
+
+//EXPLORACION DE PRODUCTOS 
+export const productosMasVendidos = async(req, res) => {
+    try {
+        let ventasProductos = await ShoppingCart.aggregate([
+            { $group: 
+                { _id: "$product", 
+                    totalVendido: { $sum: "$amount" }
+                }},//el id especidica el campo a agrupar
+            { $sort: 
+                { totalVendido: -1 }},
+            { $limit: 10 }
+           //Hacemos una union entre 2 colecciones  
+        ]).lookup({ from: 'products', localField: '_id', foreignField: '_id', as: 'product' });
+
+        return res.send({ventasProductos})
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({ message: 'Error getting Products' })
+    }
+}
+
+export const searchName = async(req, res) => {
+    try{
+        //Obtener el parámetro de búsqueda
+        let { search } = req.body
+        //Bsucar
+        let products = await Products.find({name: search}).populate( 'name')
+        //validar la respuesta
+        if(!products || products.length === 0) return res.status(404).send({message: 'Products not found '})
+        //responder si todo sale bien 
+        return res.send({message: 'Products found', products})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error searching products'})
     }
 }

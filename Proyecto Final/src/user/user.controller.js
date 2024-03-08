@@ -219,15 +219,23 @@ export const updateUserClient = async(req, res) =>{
 export const deleteClient = async(req, res) =>{
     try {
         const { id } = req.params
+        let { password } = req.body
         //const { userId } = req.body//Si el id del usuario lo envia por el request
         //Busca la publicación por id
         let secretKey = process.env.SECRET_KEY
         let token  = req.headers.authorization
         const {uid} = jwt.verify(token, secretKey); 
         //console.log(uid);
-        if(uid != id) return res.status(404).send({message: 'No puedes editar a otro client'})
+        if(uid != id) return res.status(404).send({message: 'No puedes eliminar a otro client'})
         const clientId = await User.findOne({_id: id})
         if(!clientId) return res.status(404).send({message: `Client not found`})
+        //console.log(clientId.password);
+        //Verfica que la contraseña sea correcta
+        const verifyPassword = await bcrypt.compare(password, clientId.password);
+        //console.log(verifyPassword);
+            if (verifyPassword === false) {
+                return res.status(401).send({ message: 'La contraseña es incorrecta' });
+            }
         //Verificamos que el usuario tenga el permiso de eliminar el post
         //if(clientId._id.toString() !== id) return res.status(403).send({message: `You're not authorized to delete this client`})
         //Eliminamos el post
@@ -243,6 +251,7 @@ export const deleteClient = async(req, res) =>{
 export const deleteAdmin = async(req, res) =>{
     try {
         const { id } = req.params
+        let { password } = req.body
         //const { userId } = req.body//Si el id del usuario lo envia por el request
         //Busca la publicación por id
         let secretKey = process.env.SECRET_KEY
@@ -252,7 +261,12 @@ export const deleteAdmin = async(req, res) =>{
         if(uid != id) return res.status(404).send({message: 'No puedes editar a otro admin'})
         const adminId = await User.findOne({_id: id})
         if(!adminId) return res.status(404).send({message: `Admin not found`})
-        //Verificamos que el usuario tenga el permiso de eliminar el post
+        //Verfica que la contraseña sea correcta
+        const verifyPassword = await bcrypt.compare(password, adminId.password);
+        //console.log(verifyPassword);
+            if (verifyPassword === false) {
+                return res.status(401).send({ message: 'La contraseña es incorrecta' });
+            }
         //Eliminamos el post
         const deleteAdmin = await User.deleteOne({_id: id})
         if(deleteAdmin.deletedCount === 0) return res.status(404).send({message: 'Admin not found and not deleted'})
