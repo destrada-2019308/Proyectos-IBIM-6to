@@ -55,6 +55,36 @@ export const addToCart = async(req, res) => {
     }
 }
 
+export const deleteProductCart = async (req, res) => {
+    try {
+        //traemos los datos de params
+        const { id } = req.params;
+        //validamos que el usuario sea el mismo
+        const secretKey = process.env.SECRET_KEY;
+        const token = req.headers.authorization;
+        const decodedToken = jwt.verify(token, secretKey);
+        const tokenUserId = decodedToken.uid;
+        const cart = await ShoppingCar.findById(id);
+        if (!cart) {
+            return res.status(404).send({ message: "Shopping Cart not found" });
+        }
+        if (tokenUserId !== cart.user.toString()) {
+            return res.status(401).send({ message: "No estás autorizado para realizar esta acción." });
+        }
+        if (cart.status === 'COMPLETED') {
+            return res.status(403).send({ message: "No puedes eliminar un carrito completado." });
+        }
+        const deletedCart = await ShoppingCar.deleteOne({ _id: id });
+        if (deletedCart.deletedCount === 0) {
+            return res.status(404).send({ message: 'Shopping Cart not found and not deleted' });
+        }
+        return res.send({ message: 'Deleted Product successfully' });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({ message: 'Error deleting Product' });
+    }
+}
+
 //Historial de Compra: Al iniciar sesión, los usuarios pueden acceder a un historial completo de sus compras
 //anteriores.
 

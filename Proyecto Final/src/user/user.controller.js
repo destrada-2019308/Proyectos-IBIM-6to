@@ -138,37 +138,7 @@ export const updateClient = async(req, res) =>{
         let { id } = req.params
         let data = req.body
         // Verificar si se proporciona la contraseña antigua y la nueva contraseña
-        /*if ('oldPassword' in data && 'newPassword' in data) {
-            const { oldPassword, newPassword } = req.body;
-            // Verificar si se proporciona la contraseña antigua y la nueva contraseña
-            if (!oldPassword || !newPassword) {
-                return res.status(400).json({ message: 'Se requieren la contraseña antigua y la nueva contraseña' });
-            }
-     
-            // Buscar al usuario por ID y contraseña antigua
-            const user = await User.findOne({ _id: id});
-     
-            if (!user) {
-                return res.status(401).json({ message: 'La contraseña antigua es incorrecta o el usuario no fue encontrado' });
-            }
-            // Verificar si la contraseña antigua es correcta
-            const isPasswordCorrect = await bcrypt.compare(oldPassword, user.password);
-            if (!isPasswordCorrect) {
-                return res.status(401).json({ message: 'La contraseña antigua es incorrecta' });
-            }
-    
-            // Verificar que la nueva contraseña cumpla con los requisitos mínimos
-            if (newPassword.length < 8) {
-                return res.status(400).json({ message: 'La nueva contraseña debe tener al menos 8 caracteres' });
-            }
-            let nuevacontra = await encrypt(newPassword)
-            // Actualizar la contraseña del usuario
-            const updatedUser = await User.findByIdAndUpdate(id, { password: nuevacontra }, { new: true });
-     
-            if (!updatedUser) {
-                return res.status(500).json({ message: 'Error al actualizar la contraseña del usuario' });
-            }
-        }*/
+        
         //Validar que vengan datos
         let update = checkUpdate(data, id)
         if(!update) return res.status(400).send({message: 'Have sumitted some data that cannot be updated or missing data'})

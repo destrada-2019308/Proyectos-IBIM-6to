@@ -1,4 +1,4 @@
-'use stict'
+    'use stict'
 import { Router } from 'express'
 import { deleteProduct, getInventary, infoProducMasVendidos, productoOutOfStock, productosMasVendidos, saveProduct, search, searchName, showAll, test, updateProduct } from'./product.controller.js'
 import { validateJwt, isAdmin, isClient} from '../middlewares/validate_Jwt.js'

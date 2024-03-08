@@ -156,15 +156,24 @@ export const productosMasVendidos = async(req, res) => {
 export const searchName = async(req, res) => {
     try{
         //Obtener el parámetro de búsqueda
-        let { search } = req.body
-        //Bsucar
-        let products = await Products.find({name: search}).populate( 'name')
-        //validar la respuesta
-        if(!products || products.length === 0) return res.status(404).send({message: 'Products not found '})
-        //responder si todo sale bien 
+        let { search } = req.body;
+ 
+        // Realizar la búsqueda utilizando $regex -> busca cualquier coincidencia $options -> no importa si es mayus o minusc 
+        let products = await Products.find({ name: { $regex: search, $options: 'i' } });
+ 
+        if (products.length === 0) {
+            return res.status(404).send({ message: 'Product not found' });
+        }
+        
         return res.send({message: 'Products found', products})
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error searching products'})
     }
 }
+
+
+/*Búsqueda por coincidencia, es decir, 
+si quiero buscar un producto llamado "Zapato" 
+para buscarlo podría escribir "Za" y debería de devolvermelo.
+*/

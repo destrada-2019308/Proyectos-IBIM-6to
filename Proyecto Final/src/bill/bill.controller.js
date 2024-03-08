@@ -61,7 +61,7 @@ export const completarCompra = async (req, res) => {
             totalAPagar += totalProducto  
         }
 
-        const pdfFolder = './invoices'
+        const pdfFolder = './bill'
         if(!fs.existsSync(pdfFolder)){
             fs.mkdirSync(pdfFolder)
         }
@@ -69,29 +69,36 @@ export const completarCompra = async (req, res) => {
         const pdfPath = path.resolve(pdfFolder, `factura_${Date.now()}.pdf`) 
         const doc = new PDFDocument() 
         doc.pipe(fs.createWriteStream(pdfPath)) 
-
-        doc.fontSize(25).text('Factura', { align: 'center' }).moveDown(2) 
         
+        doc.font('Helvetica-Bold').fontSize(20).text('Empresa de Diego S.A', { align: 'center'}).moveDown()
+        doc.font('Helvetica-Bold').fontSize(25).text('Factura', { align: 'center' }).moveDown(2) 
         for (const bill of bills) {
             const cart = await Cart.findById(bill.cart).populate('product') 
             const total = bill.total 
 
             doc.moveTo(50, doc.y).lineTo(550, doc.y).stroke();
+            doc.moveDown()
             doc.fontSize(15).text(`Fecha: ${bill.date.toLocaleDateString()}`,{align: 'right'})
             doc.fontSize(15).text(`ID del carrito: ${cart._id}`) 
             doc.moveDown() 
-            doc.moveTo(49, doc.y).lineTo(550, doc.y).stroke();
+            doc.moveTo(50, doc.y).lineTo(550, doc.y).stroke();
+            doc.moveDown()
             doc.fontSize(15).text('Productos:', { underline: true }).moveDown();
             const product = await Product.findById(cart.product) 
-            doc.fontSize(12).text(`${product.name} - Cantidad: ${cart.amount} - Precio unitario: ${product.price}Q`)
+            doc.fontSize(12).text(`${product.name}`)
+            doc.fontSize(12).text(` Cantidad: ${cart.amount}`)
+            doc.fontSize(12).text(` Precio unitario: Q${product.price}`)
+            doc.moveTo(50, doc.y).lineTo(250, doc.y).stroke();
+            // - - Precio unitario: ${product.price}Q
+            doc.moveDown()
             doc.fontSize(16).text(`Total del producto: ${total}`).moveDown()  // Mostramos el total del producto
 
             doc.moveDown() 
-            doc.addPage() 
+            //doc.addPage() 
         }
 
         // Mostramos el total a pagar en el documento
-        doc.fontSize(16).text(`Total del carrito: ${totalAPagar} Q`, { align: 'right' }).moveDown()
+        doc.fontSize(16).text(`Total del carrito: Q${totalAPagar}`, { align: 'right' }).moveDown()
         doc.end() 
 
         return res.send(pdfPath)

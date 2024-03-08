@@ -117,6 +117,7 @@ export const productCategory = async(req, res) =>{
         let categoryId = category._id
         //console.log(categoryId);
         let product = await Product.find({categories: categoryId})
+        if(!product || product.length === 0) return res.status(401).send({message: 'No hay productos en esta categoria'})
         return res.send({product})
     } catch (error) {
         console.error(error)
